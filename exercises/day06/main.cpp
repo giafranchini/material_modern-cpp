@@ -81,7 +81,9 @@ int main(int argc, char *argv[])
         (*pt1).Y = 3.0; // Modify y coordinate
         std::cout<<pt2->X<<" "<<pt2->Y<<std::endl;
         // dereference pt1
-        pt1 = nullptr;
+        // Be careful!! better to use std::move
+        // pt1 = nullptr;
+        pt2 = std::move(pt1);
         std::cout << "Reference counts: " << pt2.use_count() << std::endl;
         pt2->X = 5.0; // Modify x coordinate
         pt2->Y = 6.0; // Modify y coordinate
